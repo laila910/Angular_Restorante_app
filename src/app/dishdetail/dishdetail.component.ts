@@ -1,6 +1,10 @@
-import { Component, NgIterable, OnInit,Input } from '@angular/core';
-// import {DishDetail} from '../shared/dishdetail';
+import { Component,  OnInit } from '@angular/core';
+import { Params ,ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import{Dish} from '../shared/dish';
+import { DishService } from '../services/dish.service';
+// import { DishDetail } from '../shared/dishdetail';
 //  const Dish :DishDetail |(NgIterable<any> & Iterable<any>) | null | undefined= {
 //   id: '0',
 //   name: 'Uthappizza',
@@ -51,13 +55,26 @@ import{Dish} from '../shared/dish';
   styleUrls: ['./dishdetail.component.scss']
 })
 export class DishdetailComponent implements OnInit {
-@Input()
-dish :Dish|undefined;
+  dish: Dish | any;
+// @Input()
+  // dish :any| Dish;
 
 // dish : DishDetail|any=Dish;
-  constructor() { }
+  constructor(private dishService:DishService,private location: Location,private route:ActivatedRoute) {
+ 
+   }
+
 
   ngOnInit(): void {
+   
+  const id = this.route.snapshot.params['id'];
+    this.dish = this.dishService.getDish(id);
+    
+  }
+
+
+  goBack():void{
+    this.location.back();
   }
 
 }

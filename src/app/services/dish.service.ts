@@ -12,7 +12,7 @@ export class DishService {
     return DISHES;
   }
   getDish(id : string): Dish |undefined{
-    return DISHES.filter((dish)=>{ dish.id ===id })[0];
+    return DISHES.filter((dish)=>{ dish.id === id })[0];
 
   }
   getFeaturedDish(): Dish|undefined{
