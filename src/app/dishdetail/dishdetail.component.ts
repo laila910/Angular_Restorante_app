@@ -1,10 +1,12 @@
-import { Component,  OnInit } from '@angular/core';
-import { Params ,ActivatedRoute } from '@angular/router';
+import { Component,  OnInit,Input } from '@angular/core';
+import { Params ,ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import{Dish} from '../shared/dish';
+
 import { DishService } from '../services/dish.service';
 // import { DishDetail } from '../shared/dishdetail';
+import { DISHES } from '../shared/dishes';
 //  const Dish :DishDetail |(NgIterable<any> & Iterable<any>) | null | undefined= {
 //   id: '0',
 //   name: 'Uthappizza',
@@ -55,22 +57,30 @@ import { DishService } from '../services/dish.service';
   styleUrls: ['./dishdetail.component.scss']
 })
 export class DishdetailComponent implements OnInit {
-  dish: Dish | any;
+  // dish: Dish | undefined ;
 // @Input()
-  // dish :any| Dish;
+  dish : Dish|undefined;
 
 // dish : DishDetail|any=Dish;
-  constructor(private dishService:DishService,private location: Location,private route:ActivatedRoute) {
+id = this.route.snapshot.params['id'];
+
+
+  constructor(public dishService:DishService,private location: Location,private route:ActivatedRoute) {
  
    }
 
 
   ngOnInit(): void {
    
-  const id = this.route.snapshot.params['id'];
-    this.dish = this.dishService.getDish(id);
-    
+
+ console.log(this.id);
+  
+     this.dish = this.dishService.getDish(this.id);
+  
+
+
   }
+
 
 
   goBack():void{
