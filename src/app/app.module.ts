@@ -9,6 +9,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import{MatFormFieldModule} from '@angular/material/form-field';
+import{MatInputModule} from '@angular/material/input';
+import{MatCheckboxModule} from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
+
+
 
 
 import { HeaderComponent } from './header/header.component';
@@ -38,8 +44,7 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent,
-    LoginComponent
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,9 @@ import { LoginComponent } from './login/login.component';
     MatGridListModule,
     MatCardModule,
     MatButtonModule,MatDialogModule,
+    MatFormFieldModule,MatInputModule,
+    MatCheckboxModule,
+    FormsModule ,
     AppRoutingModule
   ],
   entryComponents: [
